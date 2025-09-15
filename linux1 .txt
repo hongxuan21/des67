@@ -1,0 +1,192 @@
+一、linux系统介绍
+Linux是一个免费、开源、基于Posix和Unix的多用户、多任务、支持多线程和多CPU的操作系统。
+由芬兰大学生Linux torvalds在1991年开发了该系统
+linux主流发行版本
+Ubuntu
+优点：最受欢迎的桌面linux发行版。固定的发布周期，丰富的说明文档缺点：与debian有一定的兼容问题
+red hat （红帽子）
+优点：高性能的云、虚拟化、存储、Linux 和中间件技术
+centos （我们学习）3.58g系统  6.5
+优点：非常稳定和可靠，服务器的首选，免费下载和使用缺点：内核版本比较旧
+
+为什么要学习Linux系统
+1、搭建测试环境 （jdk+linux+mysql+tomcat+java）
+2、学习linux命令
+1).系统稳定
+2).作为服务器系统使用
+二、linux命令
+
+1、ifconfig  查看ip地址
+
+2、su  切换用户
+3、防火墙命令
+service iptables  stop  关闭防火墙 
+service iptables  stats  开启防火墙
+service iptables  status  查看防护墙的状态
+service iptables  restats  重启防火墙
+4、pwd  查看当前路径
+5、ssh+ip地址  连接虚拟机
+6、cd  进入文件夹
+ cd  / 进入根目录
+cd  ~  进入管理员家目录
+cd ..  返回上一级目录
+cd ../..  返回上两级目录
+cd ../../..  返回上两级目录
+cd ./     进入当前目录
+cd .     进入当前目录
+7、mkdir  创建目录
+    mkdir -p    创建层级目录 
+
+8、ls 横向显示目录下所有的文件和文档
+ls -a    横向显示目录下所有的文件和文档和隐藏文档 （文件开头是(.)点开头）
+9、ll （ls -l简写） 纵向显示目录下所有文件和目录
+ll -a   纵向显示目录下所有的文件和文档和隐藏文档 （文件开头是(.)点开头）
+10、ping  查看网路连接状态
+11、touch  文件名   创建文档
+12、vim 或vi 编辑文档
+输入vim +文档名 ==敲回车进入到文档界面==按（i）键，变成编辑模式==输入内容==按esc键
+或ctrl+c键==shift+: ,输入wq==敲回车
+q 退出
+q！ 强制退出
+wq 保存退出
+wq！强制保存退出
+13、cp 复制命令
+     cp  -r  复制目录
+14、mv  修改文件名  或移动文件
+    （1）mv   源文档名   新文档名   修改文件 
+    (2)mv   移动的源文档   移动的路径   移动
+15、删除命令
+rm    提示性删除文档  ，
+rm -r  提示性删除文夹
+rm -rf 强制删除
+rm -rf  *  强制删除目录下所有的文档
+16、cat 查看文档中所有的内容
+    cat  文档名| grep   搜索的字符内容     ：| 管道符，grep  搜索，匹配
+
+17、head  查看文档指定前几行内容 （默认前10行）
+   head  -n  3   文档名，  查看文档指定行数
+18、 tail   查看文档之指定后几行内容 （默认后10行）
+      tail  -n   3  文档名   查看文档指定的后几行
+19、less   按上下翻页查看内容
+    退出 ：ctrl+z 或ctrl+c
+20、more  按百分比查看内容
+   退出 ：ctrl+z或ctrl+c
+
+21、find  路径  -name  文件名称  根据文件名查找文件
+
+22、tar  -cvf   压缩tar包名   压缩的内容     压缩成tar包
+       tar  -xvf   解压的tar包名   
+24、 tar -zcvf    压缩tar.gz 包   压缩内容     压缩tar.gz包
+        tar -zvf    解压tar.gz 包   
+25    zip 压缩包名.zip   压缩内容    压缩成zip包
+       unzip   压缩包.zip         解压zip包
+26、who  查看在线登录用户
+27、whoami  当前操作用户
+28、hostname  查看主机名称
+29、getconf LONG_BIT命令 查看系统位数
+30、du -sh  查看当前目录大小
+       du -sh   具体的文档名   查看具体文档的大小
+31、  reboot  重启
+32、init 0   关机
+33、 shutdown  new   关机
+34、halt  关机
+35、history  历史命令
+     history -c  清楚历史命令
+36、reset 重置屏幕
+37、clear  清空屏幕
+38、nl  显示多少行
+39、alias  简写别名=命令      取别名
+     unalias  简写别名
+40、service network restart  重启网卡
+41、yum install  应用名称      在线安装
+替换了虚拟机的镜像源：
+替换方法：
+yum修改为阿里镜像源
+第一步：备份系统自带的repo文件
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+第二步：下载阿里yum镜像源的repo文件
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-vault-6.10.repo
+第三步：清除缓存（两个命令）
+yum clean all
+第四步：删除yum缓存文件
+rm -rf /var/cache/yum
+第五步：生成新的yum缓存文件
+yum makecache
+第六步：下载lrzsz
+yum install lrzsz
+
+42、yum install lrzsz  下载rzsz工具
+rz    将windos中的文件传输到linux中
+sz    将linux中的文件传输到windos
+
+
+43、快照（在虚拟机中菜单栏的虚拟机中点击）
+（1）拍摄快照
+（2）还原快照
+
+44、重定向符号：
+cat  >    覆盖
+案例：cat   a1>b1  
+cat >>  追加
+案例：cat  a2>>b2
+
+
+45、chmod   修改权限
+案例：chmod  三个数字  文档名
+三个数字：4可读、2可写，1可执行  组合
+案例：chmod  766   a1
+7=(4+2+1)  ,6=（4+2），6=（4+2）
+
+46、chown  修改属主
+（1）chown   指定用户(用户必须存在)     文档名
+案例 ：chown    aa    a1
+（2）chown  -R   指定用户       文档名   层级修改文件的属主
+47、chgrp  修改属组
+（1）chgrp   指定用户       文档名
+案例 ：chgrp    aa    a1
+（2）chgrp   -R   指定用户       文档名   层级修改文件的属组
+
+48、useradd   用户名    添加用户
+（1）useradd  默认添加用户和用户组  ，用户名和用户师同一个名称
+案例：useradd    abc
+（2）useradd    -g添加用户指定用户组
+案例：useradd    abc  -g
+
+49、cat  /etc/passwd  查看已经添加的用户
+50、cat  /etc/group  查看已经添加的用户
+
+ 51、userdel  用户名   删除用户
+     userdel  -r  用户名      删除用户更干净
+52、groupadd  用户组   添加用户组
+53、passwd +用户名   设置密码
+54、yum  install   应用名   在线安装
+案例：yum  install mysql  在线安装数据库
+      yum  instll   lrzsz    在线安装lrzsz 的上下载工具
+55、安装rpm包，（后缀名为rpm）
+命令：rpm  -ivh   rpm包
+上传rpm到linux中 通过rz方法上传
+我们这个rpm包是一个jdk，jdk对java语言编译，
+检查：jdk是否安装成功
+java  -version  查看jdk安装
+56、tab 键联想键，
+57、（1）rz  是将windos中的文档上传到linux
+输入rz==敲回车==到windos中选择文档上传
+      （2）sz 是将linux中文档传输到windows中
+      sz  +文档  敲回车    
+58、xftp 传输工具
+将linux和windos进行连接，互相文传输文件
+59、scp超复制
+a服务器：192.168.150.129
+b服务器：192.168.150.128
+拿文档：
+scp   对方用户名@对方ip:对方路径/对方用户名   自己服务器存放路径
+案例：cp root@192.168.150.129:/home/hh /home/aa
+放文档：
+scp   自己服务器存放路径/文件名   对方用户名@对方ip:对方路径  
+案例：scp  /home/hh  root@192.168.150.129:/home/aa
+
+
+
+
+
+
